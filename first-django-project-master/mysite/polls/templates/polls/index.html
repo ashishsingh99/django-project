@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+<link rel="stylesheet" href="{% static 'formatz.css' %}">
+<head><title> Poll Index </title></head>
+<body>
+<h1><center>Welcome to the polls!</center></h1>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
